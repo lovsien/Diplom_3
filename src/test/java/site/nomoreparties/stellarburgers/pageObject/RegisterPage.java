@@ -39,6 +39,10 @@ public class RegisterPage {
         registerButton.click();
     }
 
+    public void clickLoginLink() {
+        loginLink.click();
+    }
+
     public void setRegistrationForm(String name, String email, String password) {
         setNameField(name);
         setEmailField(email);
