@@ -5,8 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 
 public class RegisterPage {
 
@@ -18,14 +17,17 @@ public class RegisterPage {
     @FindBy(how = How.XPATH, using = ".//form/fieldset[2]/div/div/input")
     private SelenideElement emailField;
 
-    @FindBy(how = How.XPATH, using = ".//form/fieldset[3]/div/div/input")
+    @FindBy(how = How.XPATH, using = ".//input[@type='password']")
     private SelenideElement passwordField;
 
-    @FindBy(how = How.XPATH, using = ".//fieldset[3]/div/p")
+    @FindBy(how = How.XPATH, using = ".//fieldset/div/p")
     private SelenideElement errorIncorrectPasswordMessage;
 
     @FindBy(how = How.XPATH, using = ".//form/button")
     private SelenideElement registerButton;
+
+    @FindBy(how = How.XPATH, using = ".//div[@class='Auth_login__3hAey']/p")
+    private SelenideElement errorExistingUserMessage;
 
     @FindBy(how = How.XPATH, using = ".//div/div/p/a")
     private SelenideElement loginLink;
@@ -52,13 +54,18 @@ public class RegisterPage {
         errorIncorrectPasswordMessage.shouldNotBe(visible);
     }
 
-    @Step("Set the registration form")
+    @Step("Check the error message of existing user does not appear when click on register button")
+    public void checkExistingUserMessageDoesNotAppear() {
+        errorExistingUserMessage.shouldNotBe(visible);
+    }
+
     public void clickRegisterButton() {
         registerButton.click();
     }
 
     @Step("Click the login link on the registration page")
     public void clickLoginLink() {
+        loginLink.shouldHave(href("/login"));
         loginLink.click();
     }
 
