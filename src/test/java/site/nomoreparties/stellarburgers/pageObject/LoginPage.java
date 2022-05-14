@@ -1,6 +1,7 @@
 package site.nomoreparties.stellarburgers.pageObject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -14,7 +15,7 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = ".//form/fieldset[2]/div/div/input")
     private SelenideElement passwordField;
 
-    @FindBy(how = How.XPATH, using = ".//form/button")
+    @FindBy(how = How.XPATH, using = ".//form/button[text()='Войти']")
     private SelenideElement submitButton;
 
     @FindBy(how = How.XPATH, using = ".//div/p[1]/a")
@@ -31,18 +32,12 @@ public class LoginPage {
         passwordField.setValue(password);
     }
 
+    @Step("Click submit button")
     public void clickSubmitButton() {
         submitButton.click();
     }
 
-    public void clickRegistrationLink() {
-        registrationLink.click();
-    }
-
-    public void clickForgotPasswordLink() {
-        forgotPasswordLink.click();
-    }
-
+    @Step("Set login form with data")
     public void setLoginForm(String email, String password) {
         setEmailField(email);
         setPasswordField(password);
