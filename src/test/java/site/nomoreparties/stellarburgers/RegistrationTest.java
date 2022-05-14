@@ -1,5 +1,7 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Test;
@@ -35,6 +37,9 @@ public class RegistrationTest {
     }
 
     @Test
+    @DisplayName("User can register in the system with correct data")
+    @Description("Register new user. Check that error messages do not appeared and after successful registration" +
+            " there is redirect to Login page. After test user is going to be deleted.")
     public void userCanRegisterWithCorrectData() {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
@@ -47,6 +52,10 @@ public class RegistrationTest {
     }
 
     @Test
+    @DisplayName("Error message of incorrect password appears, when a user is trying to register " +
+            "with 5 digits in a password")
+    @Description("Check that error message appears after clicking on submit button. " +
+            "After test user is going to be deleted.")
     public void errorMessageAppearWhenPassword5Digits() {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
@@ -56,6 +65,10 @@ public class RegistrationTest {
     }
 
     @Test
+    @DisplayName("Error message of incorrect password does not appear, when a user is trying to register " +
+            "with 6 digits in a password")
+    @Description("Check that error message does not appear after clicking on submit button. " +
+            "After test user is going to be deleted.")
     public void errorMessageDoesNotAppearWhenPassword6Digits() {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
