@@ -17,15 +17,15 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 public class RegistrationTest {
 
     final String name = "Вася";
-    final String email = "Asdf@mail.com";
-    final String correctPassword = "12345678";
+    final String email = "Asdfqy@mail.com";
     final String password5digits = "12345";
     final String password6digits = "123456";
+    String password = "12345678";
 
     @After
     public void tearDown() {
         UserClient userClient = new UserClient();
-        UserCredentials credentials = UserCredentials.builder().email(email).password(correctPassword).build();
+        UserCredentials credentials = UserCredentials.builder().email(email).password(password).build();
 
         ValidatableResponse loginResponse = userClient.loginWithCorrectCredentials(credentials);
         int responseStatusCode = loginResponse.extract().statusCode();
@@ -43,10 +43,8 @@ public class RegistrationTest {
     public void userCanRegisterWithCorrectData() {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
-        registerPage.setRegistrationForm(name, email, correctPassword);
+        registerPage.setRegistrationForm(name, email, password);
         registerPage.checkIncorrectPasswordMessageDoesNotAppear();
-
-        registerPage.clickRegisterButton();
         registerPage.checkExistingUserMessageDoesNotAppear();
         webdriver().shouldHave(url(LoginPage.URL));
     }
@@ -54,13 +52,12 @@ public class RegistrationTest {
     @Test
     @DisplayName("Error message of incorrect password appears, when a user is trying to register " +
             "with 5 digits in a password")
-    @Description("Check that error message appears after clicking on submit button. " +
-            "After test user is going to be deleted.")
+    @Description("Check that error message appears after clicking on submit button. After test user is going to be deleted.")
     public void errorMessageAppearWhenPassword5Digits() {
+        password = password5digits;
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
-        registerPage.setRegistrationForm(name, email, password5digits);
-        registerPage.clickRegisterButton();
+        registerPage.setRegistrationForm(name, email, password);
         registerPage.checkIncorrectPasswordErrorMessage();
     }
 
@@ -70,9 +67,10 @@ public class RegistrationTest {
     @Description("Check that error message does not appear after clicking on submit button. " +
             "After test user is going to be deleted.")
     public void errorMessageDoesNotAppearWhenPassword6Digits() {
+        password = password6digits;
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
-        registerPage.setRegistrationForm(name, email, password6digits);
+        registerPage.setRegistrationForm(name, email, password);
         registerPage.checkIncorrectPasswordMessageDoesNotAppear();
     }
 

@@ -44,6 +44,10 @@ public class RegisterPage {
         passwordField.setValue(password);
     }
 
+    public void clickRegisterButton() {
+        registerButton.click();
+    }
+
     @Step("Check the error message of incorrect password appears when password's length is less than six digits")
     public void checkIncorrectPasswordErrorMessage() {
         errorIncorrectPasswordMessage.shouldBe(visible).shouldHave(text("Некорректный пароль"));
@@ -59,21 +63,18 @@ public class RegisterPage {
         errorExistingUserMessage.shouldNotBe(visible);
     }
 
-    public void clickRegisterButton() {
-        registerButton.click();
-    }
-
     @Step("Click the login link on the registration page")
     public void clickLoginLink() {
         loginLink.shouldHave(href("/login"));
         loginLink.click();
     }
 
-    @Step("Set the registration form")
+    @Step("Set the registration form and submit it")
     public void setRegistrationForm(String name, String email, String password) {
         setNameField(name);
         setEmailField(email);
         setPasswordField(password);
+        clickRegisterButton();
     }
 
 }

@@ -16,14 +16,13 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 public class LoginTest {
 
     final String name = "Вася";
-    final String email = "Asdf@mail.com";
+    final String email = "Asdfpo@mail.com";
     final String password = "12345678";
 
     @Before
     public void setUp() {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
         registerPage.setRegistrationForm(name, email, password);
-        registerPage.clickRegisterButton();
     }
 
     @After
@@ -51,7 +50,6 @@ public class LoginTest {
 
         LoginPage loginPage = page(LoginPage.class);
         loginPage.setLoginForm(email, password);
-        loginPage.clickSubmitButton();
 
         webdriver().shouldHave(url(ConstructorPage.URL));
     }
@@ -68,7 +66,6 @@ public class LoginTest {
 
         LoginPage loginPage = page(LoginPage.class);
         loginPage.setLoginForm(email, password);
-        loginPage.clickSubmitButton();
 
         webdriver().shouldHave(url(ConstructorPage.URL));
     }
@@ -85,7 +82,6 @@ public class LoginTest {
 
         LoginPage loginPage = page(LoginPage.class);
         loginPage.setLoginForm(email, password);
-        loginPage.clickSubmitButton();
 
         webdriver().shouldHave(url(ConstructorPage.URL));
     }
@@ -102,7 +98,6 @@ public class LoginTest {
 
         LoginPage loginPage = page(LoginPage.class);
         loginPage.setLoginForm(email, password);
-        loginPage.clickSubmitButton();
 
         webdriver().shouldHave(url(ConstructorPage.URL));
     }

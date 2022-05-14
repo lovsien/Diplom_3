@@ -32,15 +32,15 @@ public class LoginPage {
         passwordField.setValue(password);
     }
 
-    @Step("Click submit button")
     public void clickSubmitButton() {
         submitButton.click();
     }
 
-    @Step("Set login form with data")
+    @Step("Set login form with data and submit it")
     public void setLoginForm(String email, String password) {
         setEmailField(email);
         setPasswordField(password);
+        clickSubmitButton();
     }
 
 }
