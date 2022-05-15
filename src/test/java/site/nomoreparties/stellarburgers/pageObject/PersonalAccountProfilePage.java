@@ -5,6 +5,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import static com.codeborne.selenide.Selenide.webdriver;
+import static com.codeborne.selenide.WebDriverConditions.url;
+
 public class PersonalAccountProfilePage {
 
     final static public String URL = "https://stellarburgers.nomoreparties.site/account/profile";
@@ -17,4 +20,8 @@ public class PersonalAccountProfilePage {
         logoutButton.click();
     }
 
+    @Step("Check that URL is login page")
+    public void checkURLIsLoginPage() {
+        webdriver().shouldHave(url(LoginPage.URL));
+    }
 }

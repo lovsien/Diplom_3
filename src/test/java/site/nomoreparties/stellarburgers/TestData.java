@@ -13,10 +13,6 @@ public class TestData {
         final String email = RandomStringUtils.randomAlphabetic(4).toLowerCase() + "@mail.com";
         final String password = RandomStringUtils.randomAlphabetic(8);
 
-        Allure.addAttachment("Name: ", name);
-        Allure.addAttachment("Email: ", email);
-        Allure.addAttachment("Password: ", password);
-
         return User.builder().name(name).email(email).password(password).build();
     }
 

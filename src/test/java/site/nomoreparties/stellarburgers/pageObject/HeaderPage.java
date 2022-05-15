@@ -6,6 +6,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import static com.codeborne.selenide.Selenide.webdriver;
+import static com.codeborne.selenide.WebDriverConditions.url;
+
 public class HeaderPage {
 
     @FindBy(how = How.XPATH, using = ".//header/nav/div/a")
@@ -20,6 +23,16 @@ public class HeaderPage {
     @Step("Click on personal account button in header")
     public void clickPersonalAccountButton() {
         personalAccountButton.click();
+    }
+
+    @Step("Check that URL is profile in account page")
+    public void checkURLIsProfilePage() {
+        webdriver().shouldHave(url(PersonalAccountProfilePage.URL));
+    }
+
+    @Step("Check that URL is homepage")
+    public void checkURlIsHomepage() {
+        webdriver().shouldHave(url(ConstructorPage.URL));
     }
 
     public void checkButtonHasHrefToAccount() {

@@ -30,6 +30,7 @@ public class LoginTest {
 
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
         registerPage.setRegistrationForm(name, email, password);
+        registerPage.clickRegisterButton();
     }
 
     @After

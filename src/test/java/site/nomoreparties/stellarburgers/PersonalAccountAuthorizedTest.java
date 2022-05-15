@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -54,12 +55,14 @@ public class PersonalAccountAuthorizedTest {
 
     @Test
     @DisplayName("Personal Account button redirects to Personal Account Page when user is authorized")
+    @Description("Create new user and login. Click on Personal Account button. It redirects to Profile page, " +
+            "when user is logged in.")
     public void personalAccountButtonRedirectsToPersonalAccount() {
         HeaderPage headerPage = page(HeaderPage.class);
 
         headerPage.checkButtonHasHrefToAccount();
         headerPage.clickPersonalAccountButton();
-        webdriver().shouldHave(url(PersonalAccountProfilePage.URL));
+        headerPage.checkURLIsProfilePage();
     }
 
 }

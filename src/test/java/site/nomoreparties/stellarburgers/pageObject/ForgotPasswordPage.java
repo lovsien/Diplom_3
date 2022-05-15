@@ -1,6 +1,7 @@
 package site.nomoreparties.stellarburgers.pageObject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -25,6 +26,7 @@ public class ForgotPasswordPage {
         submitButton.click();
     }
 
+    @Step("Click login link on forgot password page")
     public void clickLoginLink() {
         loginLink.click();
     }

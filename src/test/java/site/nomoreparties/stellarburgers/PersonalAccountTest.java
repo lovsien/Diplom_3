@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
@@ -59,28 +60,33 @@ public class PersonalAccountTest {
 
     @Test
     @DisplayName("Logout from the system on personal account page")
+    @Description("Logged user should have an ability to log out from the system")
     public void logoutFromPersonalAccountButton() {
         PersonalAccountProfilePage personalAccountProfilePage = page(PersonalAccountProfilePage.class);
         personalAccountProfilePage.clickLogoutButton();
-        webdriver().shouldHave(url(LoginPage.URL));
+        personalAccountProfilePage.checkURLIsLoginPage();
     }
 
     @Test
     @DisplayName("By click construction button user redirects from personal account to homepage")
+    @Description("Create new user and log in. Go to Personal Account. Then click on Constructor button in Header. " +
+            "It will redirect you to homepage.")
     public void constructorButtonRedirectsFromPersonalAccountToHomepage() {
         HeaderPage headerPage = page(HeaderPage.class);
 
         headerPage.clickConstructorButton();
-        webdriver().shouldHave(url(ConstructorPage.URL));
+        headerPage.checkURlIsHomepage();
     }
 
     @Test
     @DisplayName("By click logo user redirects from personal account to homepage")
+    @Description("Create new user and log in. Go to Personal Account. Then click on logo in Header. " +
+            "It will redirect you to homepage.")
     public void logoRedirectsFromPersonalAccountToHomepage() {
         HeaderPage headerPage = page(HeaderPage.class);
 
         headerPage.clickLogo();
-        webdriver().shouldHave(url(ConstructorPage.URL));
+        headerPage.checkURlIsHomepage();
     }
 
 }
