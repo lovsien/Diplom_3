@@ -7,20 +7,27 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.pageObject.*;
-import userDeletion.UserClient;
-import userDeletion.UserCredentials;
+import site.nomoreparties.stellarburgers.userDeletion.User;
+import site.nomoreparties.stellarburgers.userDeletion.UserClient;
+import site.nomoreparties.stellarburgers.userDeletion.UserCredentials;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class LoginTest {
 
-    final String name = "Вася";
-    final String email = "Asdfpo@mail.com";
-    final String password = "12345678";
+    TestData testData = new TestData();
+    String name;
+    String email;
+    String password;
 
     @Before
     public void setUp() {
+        User user = testData.getRandomUserTestData();
+        name = user.getName();
+        email = user.getEmail();
+        password = user.getPassword();
+
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
         registerPage.setRegistrationForm(name, email, password);
     }
@@ -50,6 +57,7 @@ public class LoginTest {
 
         LoginPage loginPage = page(LoginPage.class);
         loginPage.setLoginForm(email, password);
+        loginPage.clickSubmitButton();
 
         webdriver().shouldHave(url(ConstructorPage.URL));
     }
@@ -66,6 +74,7 @@ public class LoginTest {
 
         LoginPage loginPage = page(LoginPage.class);
         loginPage.setLoginForm(email, password);
+        loginPage.clickSubmitButton();
 
         webdriver().shouldHave(url(ConstructorPage.URL));
     }
@@ -82,6 +91,7 @@ public class LoginTest {
 
         LoginPage loginPage = page(LoginPage.class);
         loginPage.setLoginForm(email, password);
+        loginPage.clickSubmitButton();
 
         webdriver().shouldHave(url(ConstructorPage.URL));
     }
@@ -98,6 +108,7 @@ public class LoginTest {
 
         LoginPage loginPage = page(LoginPage.class);
         loginPage.setLoginForm(email, password);
+        loginPage.clickSubmitButton();
 
         webdriver().shouldHave(url(ConstructorPage.URL));
     }

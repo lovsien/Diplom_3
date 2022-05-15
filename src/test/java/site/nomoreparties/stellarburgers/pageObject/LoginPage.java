@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers.pageObject;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
@@ -24,23 +25,27 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = ".//div/p[2]/a")
     private SelenideElement forgotPasswordLink;
 
+    @Step("Set email field")
     public void setEmailField(String email) {
+        emailField.shouldBe(Condition.visible);
         emailField.setValue(email);
     }
 
+    @Step("Set password field")
     public void setPasswordField(String password) {
+        passwordField.shouldBe(Condition.visible);
         passwordField.setValue(password);
     }
 
+    @Step("Submit the login form")
     public void clickSubmitButton() {
         submitButton.click();
     }
 
-    @Step("Set login form with data and submit it")
+    @Step("Set the login form with data and submit it")
     public void setLoginForm(String email, String password) {
         setEmailField(email);
         setPasswordField(password);
-        clickSubmitButton();
     }
 
 }
