@@ -1,4 +1,4 @@
-package userDeletion;
+package site.nomoreparties.stellarburgers.userDeletion;
 
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
