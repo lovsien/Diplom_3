@@ -32,18 +32,25 @@ public class RegisterPage {
     @FindBy(how = How.XPATH, using = ".//div/div/p/a")
     private SelenideElement loginLink;
 
+    @Step("Set name field")
     public void setNameField(String name) {
+        nameField.shouldBe(visible);
         nameField.setValue(name);
     }
 
+    @Step("Set email field")
     public void setEmailField(String email) {
+        emailField.shouldBe(visible);
         emailField.setValue(email);
     }
 
+    @Step("Set password field")
     public void setPasswordField(String password) {
+        passwordField.shouldBe(visible);
         passwordField.setValue(password);
     }
 
+    @Step("Submit the registration form")
     public void clickRegisterButton() {
         registerButton.click();
     }
@@ -69,12 +76,11 @@ public class RegisterPage {
         loginLink.click();
     }
 
-    @Step("Set the registration form and submit it")
+    @Step("Set the registration form")
     public void setRegistrationForm(String name, String email, String password) {
         setNameField(name);
         setEmailField(email);
         setPasswordField(password);
-        clickRegisterButton();
     }
 
 }

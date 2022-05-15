@@ -4,11 +4,13 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.pageObject.LoginPage;
 import site.nomoreparties.stellarburgers.pageObject.RegisterPage;
-import userDeletion.UserClient;
-import userDeletion.UserCredentials;
+import site.nomoreparties.stellarburgers.userDeletion.User;
+import site.nomoreparties.stellarburgers.userDeletion.UserClient;
+import site.nomoreparties.stellarburgers.userDeletion.UserCredentials;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.webdriver;
@@ -16,11 +18,20 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class RegistrationTest {
 
-    final String name = "Вася";
-    final String email = "Asdfqy@mail.com";
+    TestData testData = new TestData();
+    String name;
+    String email;
+    String password;
     final String password5digits = "12345";
     final String password6digits = "123456";
-    String password = "12345678";
+
+    @Before
+    public void setUp() {
+        User user = testData.getRandomUserTestData();
+        name = user.getName();
+        email = user.getEmail();
+        password = user.getPassword();
+    }
 
     @After
     public void tearDown() {
@@ -44,6 +55,7 @@ public class RegistrationTest {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
         registerPage.setRegistrationForm(name, email, password);
+        registerPage.clickRegisterButton();
         registerPage.checkIncorrectPasswordMessageDoesNotAppear();
         registerPage.checkExistingUserMessageDoesNotAppear();
         webdriver().shouldHave(url(LoginPage.URL));
@@ -58,6 +70,7 @@ public class RegistrationTest {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
         registerPage.setRegistrationForm(name, email, password);
+        registerPage.clickRegisterButton();
         registerPage.checkIncorrectPasswordErrorMessage();
     }
 
@@ -71,6 +84,7 @@ public class RegistrationTest {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
 
         registerPage.setRegistrationForm(name, email, password);
+        registerPage.clickRegisterButton();
         registerPage.checkIncorrectPasswordMessageDoesNotAppear();
     }
 
