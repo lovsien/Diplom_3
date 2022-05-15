@@ -14,9 +14,6 @@ public class HeaderPage {
     @FindBy(how = How.XPATH, using = ".//header/nav/a")
     private SelenideElement personalAccountButton;
 
-    @FindBy(how = How.XPATH, using = ".//header/nav/ul/li[2]/a")
-    private SelenideElement ordersQueueButton;
-
     @FindBy(how = How.XPATH, using = ".//header/nav/ul/li[1]/a")
     private SelenideElement constructorButton;
 
@@ -28,4 +25,15 @@ public class HeaderPage {
     public void checkButtonHasHrefToAccount() {
         personalAccountButton.shouldHave(Condition.href("/account"));
     }
+
+    @Step("Click on constructor button")
+    public void clickConstructorButton() {
+        constructorButton.click();
+    }
+
+    @Step("Click on logo")
+    public void clickLogo() {
+        logo.click();
+    }
+
 }
