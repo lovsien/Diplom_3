@@ -10,19 +10,19 @@ public class LoginPage {
 
     final static public String URL = "https://stellarburgers.nomoreparties.site/login";
 
-    @FindBy(how = How.XPATH, using = ".//form/fieldset[1]/div/div/input")
+    @FindBy(how = How.XPATH, using = ".//input[@type='text']")
     private SelenideElement emailField;
 
-    @FindBy(how = How.XPATH, using = ".//form/fieldset[2]/div/div/input")
+    @FindBy(how = How.XPATH, using = ".//input[@type='password']")
     private SelenideElement passwordField;
 
-    @FindBy(how = How.XPATH, using = ".//form/button[text()='Войти']")
+    @FindBy(how = How.XPATH, using = ".//button[text()='Войти']")
     private SelenideElement submitButton;
 
-    @FindBy(how = How.XPATH, using = ".//div/p[1]/a")
+    @FindBy(how = How.XPATH, using = ".//a[@href='/register']")
     private SelenideElement registrationLink;
 
-    @FindBy(how = How.XPATH, using = ".//div/p[2]/a")
+    @FindBy(how = How.XPATH, using = ".//a[@href='/forgot-password']")
     private SelenideElement forgotPasswordLink;
 
     @Step("Set email field")

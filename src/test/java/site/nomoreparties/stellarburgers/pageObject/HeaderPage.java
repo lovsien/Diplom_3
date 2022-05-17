@@ -11,13 +11,13 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class HeaderPage {
 
-    @FindBy(how = How.XPATH, using = ".//header/nav/div/a")
+    @FindBy(how = How.XPATH, using = ".//div[@class='AppHeader_header__logo__2D0X2']/a")
     private SelenideElement logo;
 
-    @FindBy(how = How.XPATH, using = ".//header/nav/a")
+    @FindBy(how = How.XPATH, using = ".//nav/a[@href='/account']")
     private SelenideElement personalAccountButton;
 
-    @FindBy(how = How.XPATH, using = ".//header/nav/ul/li[1]/a")
+    @FindBy(how = How.XPATH, using = ".//li[1]/a[@href='/']")
     private SelenideElement constructorButton;
 
     @Step("Click on personal account button in header")

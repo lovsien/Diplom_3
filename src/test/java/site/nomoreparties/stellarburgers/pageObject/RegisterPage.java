@@ -11,25 +11,25 @@ public class RegisterPage {
 
     final static public String URL = "https://stellarburgers.nomoreparties.site/register";
 
-    @FindBy(how = How.XPATH, using = ".//form/fieldset[1]/div/div/input")
+    @FindBy(how = How.XPATH, using = ".//fieldset[1]/.//input[@type='text']")
     private SelenideElement nameField;
 
-    @FindBy(how = How.XPATH, using = ".//form/fieldset[2]/div/div/input")
+    @FindBy(how = How.XPATH, using = ".//fieldset[2]/.//input[@type='text']")
     private SelenideElement emailField;
 
     @FindBy(how = How.XPATH, using = ".//input[@type='password']")
     private SelenideElement passwordField;
 
-    @FindBy(how = How.XPATH, using = ".//fieldset/div/p")
+    @FindBy(how = How.XPATH, using = ".//p[text()='Некорректный пароль']")
     private SelenideElement errorIncorrectPasswordMessage;
 
-    @FindBy(how = How.XPATH, using = ".//form/button")
+    @FindBy(how = How.XPATH, using = ".//button[text()='Зарегистрироваться']")
     private SelenideElement registerButton;
 
-    @FindBy(how = How.XPATH, using = ".//div[@class='Auth_login__3hAey']/p")
+    @FindBy(how = How.XPATH, using = ".//p[text()='Такой пользователь уже существует']")
     private SelenideElement errorExistingUserMessage;
 
-    @FindBy(how = How.XPATH, using = ".//div/div/p/a")
+    @FindBy(how = How.XPATH, using = ".//a[@class='Auth_link__1fOlj']")
     private SelenideElement loginLink;
 
     @Step("Set name field")

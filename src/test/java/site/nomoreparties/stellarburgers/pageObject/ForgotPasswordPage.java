@@ -12,10 +12,10 @@ public class ForgotPasswordPage {
     @FindBy(how = How.XPATH, using = ".//input[@name='name']")
     private SelenideElement emailField;
 
-    @FindBy(how = How.XPATH, using = ".//form/button")
+    @FindBy(how = How.XPATH, using = ".//button[text()='Восстановить']")
     private SelenideElement submitButton;
 
-    @FindBy(how = How.XPATH, using = ".//div/p/a")
+    @FindBy(how = How.XPATH, using = ".//a[@class='Auth_link__1fOlj']")
     private SelenideElement loginLink;
 
     public void setEmailField(String email) {
