@@ -13,20 +13,20 @@ public class ConstructorPage {
     @FindBy(how = How.XPATH, using = ".//span[text()='Соусы']")
     private SelenideElement saucesAnchor;
 
-    @FindBy(how = How.XPATH, using = ".//div/h2[text()='Соусы']")
-    private SelenideElement saucesHeader;
+    @FindBy(how = How.XPATH, using = ".//span[text()='Соусы']/..")
+    private SelenideElement saucesTab;
 
-    @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']")
+    @FindBy(how = How.XPATH, using = ".//span[text()='Булки']")
     private SelenideElement bunsAnchor;
 
-    @FindBy(how = How.XPATH, using = ".//div/h2[text()='Булки']")
-    private SelenideElement bunsHeader;
+    @FindBy(how = How.XPATH, using = ".//span[text()='Булки']/..")
+    private SelenideElement bunsTab;
 
     @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']")
     private SelenideElement fillingsAnchor;
 
-    @FindBy(how = How.XPATH, using = ".//div/h2[text()='Начинки']")
-    private SelenideElement fillingsHeader;
+    @FindBy(how = How.XPATH, using = ".//span[text()='Начинки']/..")
+    private SelenideElement fillingsTab;
 
     @FindBy(how = How.XPATH, using = ".//button[text()='Войти в аккаунт']")
     private SelenideElement loginButton;
@@ -37,9 +37,9 @@ public class ConstructorPage {
         saucesAnchor.click();
     }
 
-    @Step("Check sauces header is visible")
-    public void checkSaucesHeaderIsVisible() {
-        saucesHeader.shouldBe(Condition.visible);
+    @Step("Check scrolling to sauces")
+    public void checkScrollToSaucesIsWorking() {
+        saucesTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 
     @Step("Click on Buns")
@@ -48,9 +48,9 @@ public class ConstructorPage {
         bunsAnchor.click();
     }
 
-    @Step("Check buns header is visible")
-    public void checkBunsHeaderIsVisible() {
-        bunsHeader.shouldBe(Condition.visible);
+    @Step("Check scrolling to buns")
+    public void checkScrollToBunsIsWorking() {
+        bunsTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 
     @Step("Click on Fillings")
@@ -59,9 +59,9 @@ public class ConstructorPage {
         fillingsAnchor.click();
     }
 
-    @Step("Check fillings header is visible")
-    public void checkFillingsHeaderIsVisible() {
-        fillingsHeader.shouldBe(Condition.visible);
+    @Step("Check scrolling to fillings")
+    public void checkScrollToFillingsIsWorking() {
+        fillingsTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 
     @Step("Click login button on homepage")

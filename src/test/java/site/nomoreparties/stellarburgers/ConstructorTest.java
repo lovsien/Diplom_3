@@ -9,29 +9,28 @@ import static com.codeborne.selenide.Selenide.open;
 public class ConstructorTest {
 
     @Test
-    @DisplayName("List scrolls to Buns section when click on Buns")
+    @DisplayName("List scrolls to Buns section when clicking on Buns")
     public void checkBunsAnchorOpensBunsSection() {
         ConstructorPage constructorPage = open(ConstructorPage.URL, ConstructorPage.class);
 
-        constructorPage.clickBuns();
-        constructorPage.checkBunsHeaderIsVisible();
+        constructorPage.checkScrollToBunsIsWorking();
     }
 
     @Test
-    @DisplayName("List scrolls to Sauces section when click on Sauces")
+    @DisplayName("List scrolls to Sauces section when clicking on Sauces")
     public void checkSaucesAnchorOpensSaucesSection() {
         ConstructorPage constructorPage = open(ConstructorPage.URL, ConstructorPage.class);
 
         constructorPage.clickSauces();
-        constructorPage.checkSaucesHeaderIsVisible();
+        constructorPage.checkScrollToSaucesIsWorking();
     }
 
     @Test
-    @DisplayName("List scrolls to Fillings section when click on Fillings")
+    @DisplayName("List scrolls to Fillings section when clicking on Fillings")
     public void checkFillingsAnchorOpensFillingsSection() {
         ConstructorPage constructorPage = open(ConstructorPage.URL, ConstructorPage.class);
 
         constructorPage.clickFillings();
-        constructorPage.checkFillingsHeaderIsVisible();
+        constructorPage.checkScrollToFillingsIsWorking();
     }
 }
