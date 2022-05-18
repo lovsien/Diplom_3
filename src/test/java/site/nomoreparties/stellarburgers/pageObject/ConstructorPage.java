@@ -37,8 +37,8 @@ public class ConstructorPage {
         saucesAnchor.click();
     }
 
-    @Step("Check scrolling to sauces")
-    public void checkScrollToSaucesIsWorking() {
+    @Step("Check Sauces tab is opened")
+    public void checkSaucesTabIsOpened() {
         saucesTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 
@@ -48,8 +48,8 @@ public class ConstructorPage {
         bunsAnchor.click();
     }
 
-    @Step("Check scrolling to buns")
-    public void checkScrollToBunsIsWorking() {
+    @Step("Check Buns tab is opened")
+    public void checkBunsTabIsOpened() {
         bunsTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 
@@ -59,8 +59,8 @@ public class ConstructorPage {
         fillingsAnchor.click();
     }
 
-    @Step("Check scrolling to fillings")
-    public void checkScrollToFillingsIsWorking() {
+    @Step("Check Fillings tab is opened")
+    public void checkFillingsTabIsOpened() {
         fillingsTab.shouldHave(Condition.cssClass("tab_tab_type_current__2BEPc"));
     }
 

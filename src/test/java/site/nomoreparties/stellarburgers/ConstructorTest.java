@@ -13,7 +13,9 @@ public class ConstructorTest {
     public void checkBunsAnchorOpensBunsSection() {
         ConstructorPage constructorPage = open(ConstructorPage.URL, ConstructorPage.class);
 
-        constructorPage.checkScrollToBunsIsWorking();
+        constructorPage.clickSauces();
+        constructorPage.clickBuns();
+        constructorPage.checkBunsTabIsOpened();
     }
 
     @Test
@@ -22,7 +24,7 @@ public class ConstructorTest {
         ConstructorPage constructorPage = open(ConstructorPage.URL, ConstructorPage.class);
 
         constructorPage.clickSauces();
-        constructorPage.checkScrollToSaucesIsWorking();
+        constructorPage.checkSaucesTabIsOpened();
     }
 
     @Test
@@ -31,6 +33,6 @@ public class ConstructorTest {
         ConstructorPage constructorPage = open(ConstructorPage.URL, ConstructorPage.class);
 
         constructorPage.clickFillings();
-        constructorPage.checkScrollToFillingsIsWorking();
+        constructorPage.checkFillingsTabIsOpened();
     }
 }
