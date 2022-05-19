@@ -9,12 +9,9 @@ import static com.codeborne.selenide.Selenide.open;
 public class ConstructorTest {
 
     @Test
-    @DisplayName("List scrolls to Buns section when clicking on Buns")
-    public void checkBunsAnchorOpensBunsSection() {
+    @DisplayName("Buns section is opened when opening homepage")
+    public void checkBunsSectionIsOpenedWhenOpeningHomepage() {
         ConstructorPage constructorPage = open(ConstructorPage.URL, ConstructorPage.class);
-
-        constructorPage.clickSauces();
-        constructorPage.clickBuns();
         constructorPage.checkBunsTabIsOpened();
     }
 
@@ -35,4 +32,5 @@ public class ConstructorTest {
         constructorPage.clickFillings();
         constructorPage.checkFillingsTabIsOpened();
     }
+
 }

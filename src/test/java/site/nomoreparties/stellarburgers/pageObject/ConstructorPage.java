@@ -33,7 +33,6 @@ public class ConstructorPage {
 
     @Step("Click on Sauces")
     public void clickSauces() {
-        saucesAnchor.shouldBe(Condition.visible);
         saucesAnchor.click();
     }
 
@@ -44,7 +43,6 @@ public class ConstructorPage {
 
     @Step("Click on Buns")
     public void clickBuns() {
-        bunsAnchor.shouldBe(Condition.visible);
         bunsAnchor.click();
     }
 
@@ -55,7 +53,6 @@ public class ConstructorPage {
 
     @Step("Click on Fillings")
     public void clickFillings() {
-        fillingsAnchor.shouldBe(Condition.visible);
         fillingsAnchor.click();
     }
 
